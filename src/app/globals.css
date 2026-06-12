@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: #e7e7ee;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#8b5cf6, #22d3ee);
+  border-radius: 8px;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .glass-hover {
+    transition: border-color 0.4s ease, transform 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+  .glass-hover:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #c4b5fd, #22d3ee 55%, #ec4899);
+  }
+
+  .gradient-text-shimmer {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      110deg,
+      #8b5cf6,
+      #22d3ee,
+      #ec4899,
+      #8b5cf6
+    );
+    background-size: 200% auto;
+    animation: shimmer 6s linear infinite;
+  }
+
+  .section-pad {
+    @apply mx-auto w-full max-w-6xl px-6 py-24 sm:px-8;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10
+      bg-white/5 px-3 py-1 text-xs font-medium text-white/70;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      bg-gradient-to-r from-neon-violet to-neon-cyan px-6 py-3 text-sm
+      font-semibold text-white transition-all duration-300
+      hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.7)] hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      border border-white/15 px-6 py-3 text-sm font-semibold text-white/80
+      transition-all duration-300 hover:border-white/40 hover:text-white;
+  }
+}
+
+/* Aurora glow blobs */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ───────────────── Anime / Japanese-neon theme (scoped to .anime-neon) ───────────────── */
+.anime-neon {
+  --neon-pink: #ff2d95;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #b14dff;
+  --neon-red: #ff2d55;
+  /* re-skin all headings on the About page with the cyber font */
+  --font-display: "Orbitron", system-ui, sans-serif;
+  --font-jp: "DotGothic16", system-ui, sans-serif;
+}
+
+/* neon glow on About headings */
+.anime-neon .gradient-text-shimmer {
+  filter: drop-shadow(0 0 14px rgba(255, 45, 149, 0.55));
+}
+.anime-neon h2 {
+  text-shadow: 0 0 14px rgba(0, 240, 255, 0.28);
+}
+.anime-neon .glass {
+  background: rgba(9, 8, 20, 0.66);
+  border-color: rgba(255, 45, 149, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.neon-title {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 45, 149, 0.9), 0 0 22px rgba(255, 45, 149, 0.6),
+    0 0 44px rgba(0, 240, 255, 0.4);
+}
+
+.neon-pink-text {
+  color: #fff;
+  text-shadow: 0 0 6px var(--neon-pink), 0 0 14px var(--neon-pink),
+    0 0 28px rgba(255, 45, 149, 0.6);
+}
+.neon-cyan-text {
+  color: #eafdff;
+  text-shadow: 0 0 6px var(--neon-cyan), 0 0 14px var(--neon-cyan),
+    0 0 28px rgba(0, 240, 255, 0.5);
+}
+.neon-box {
+  border: 1px solid rgba(255, 45, 149, 0.4);
+  box-shadow: 0 0 18px -4px rgba(255, 45, 149, 0.5),
+    inset 0 0 18px -10px rgba(0, 240, 255, 0.4);
+}
+
+/* CRT scanlines + flicker overlay */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Synthwave perspective grid floor */
+.synth-grid {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55vh;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 240, 255, 0.35) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 45, 149, 0.35) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(380px) rotateX(70deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, black 5%, transparent 75%);
+  animation: grid-scroll 7s linear infinite;
+}
+@keyframes grid-scroll {
+  to {
+    background-position: 0 44px;
+  }
+}
+
+/* Neon flicker (used on accents) */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+.neon-flicker {
+  animation: neon-flicker 4s infinite;
+}
+
+.jp {
+  font-family: var(--font-jp), sans-serif;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.3em;
+}
