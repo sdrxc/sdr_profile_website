@@ -34,7 +34,7 @@ type Ctx = {
 const InterestsThemeContext = createContext<Ctx | null>(null);
 
 export function InterestsThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<InterestsTheme>("nod");
+  const [theme, setThemeState] = useState<InterestsTheme>("manns");
 
   // Hydrate from storage on mount so SSR markup stays consistent.
   useEffect(() => {

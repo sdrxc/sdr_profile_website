@@ -20,6 +20,7 @@ import { ProgressBar } from "./components/ProgressBar";
 import { ChapterRail } from "./components/ChapterRail";
 import { KafkaRoach } from "./components/KafkaRoach";
 import { SCENES, CHAPTERS } from "./scenes";
+import { Breathtaking } from "../Breathtaking";
 
 export function InterestsAtlas() {
   const [active, setActive] = useState<string>(SCENES[0]?.id ?? "");
@@ -58,6 +59,10 @@ export function InterestsAtlas() {
       {SCENES.map(({ id, Component }) => (
         <Component key={id} />
       ))}
+
+      <div className="pb-32 pt-12 px-6">
+        <Breathtaking />
+      </div>
     </div>
   );
 }

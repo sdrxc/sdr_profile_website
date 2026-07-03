@@ -7,7 +7,6 @@ import { ConcentricCosmos } from "@/components/about/ConcentricCosmos";
 import { TaxonomyBranch } from "@/components/about/TaxonomyBranch";
 import { JourneyGitTree } from "@/components/about/JourneyGitTree";
 import { HyperjumpLink } from "@/components/about/Hyperjump";
-import { Breathtaking } from "@/components/about/Breathtaking";
 import { InterstellarQuotes, MorseStay, InterstellarEasterEggs } from "@/components/about/Interstellar";
 import { about } from "@/data/about";
 
@@ -143,9 +142,6 @@ export default function AboutPage() {
             </HyperjumpLink>
           </div>
         </Reveal>
-
-        {/* Grand finale — for the visitor who made it this far */}
-        <Breathtaking />
 
         {/* hidden hint */}
         <p className="mt-16 text-center font-mono text-[10px] tracking-[0.35em] text-white/15">
