@@ -1,62 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AnimeNeonBackground } from "@/components/themes/AnimeNeonBackground";
-import { PixelGame } from "@/components/PixelGame";
+import { ArcadeHallBackdrop } from "@/components/games/ArcadeHallBackdrop";
+import { Arcade } from "@/components/games/Arcade";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Arcade",
-  description: "Bored of the profile? Play Pixel Dash.",
+  description:
+    "A PS5-style game library — pixel runner, neon tetris, Developer Quest, flag trivia, the seven bridges of Königsberg, and an unbeatable tic-tac-toe.",
 };
 
 export default function GamePage() {
+  // `pixel-arcade` is kept so individual games still inherit their neon CSS
+  // variables (--neon-pink, --neon-cyan, …) and the pixel font.
   return (
-    <div className="anime-neon scanlines relative min-h-screen">
-      <AnimeNeonBackground />
+    <div className="pixel-arcade relative min-h-screen">
+      <ArcadeHallBackdrop />
 
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-28">
+      <section className="relative flex min-h-screen flex-col items-center px-4 py-16 sm:px-6 sm:py-20">
         <Reveal>
-          <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white">
-            ← Back to profile
+          <Link
+            href="/"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/65 backdrop-blur-md transition-all hover:border-sky-300/40 hover:bg-sky-400/10 hover:text-white"
+          >
+            <span aria-hidden>‹</span>
+            Profile
           </Link>
         </Reveal>
 
-        <Reveal>
-          <p className="mb-3 text-center">
-            <span className="jp neon-pink-text text-xl">休憩</span>
-            <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-neon-cyan">insert coin</span>
-          </p>
-          <h1 className="text-center font-display text-4xl font-extrabold uppercase tracking-tight neon-title sm:text-6xl">
-            Pixel Dash
-          </h1>
-          <p className="mx-auto mt-4 max-w-md text-center text-white/55">
-            Bored of the profile? No worries. Outrun the neon spikes, grab the stars,
-            and see how far you get before it&apos;s game over.
-          </p>
-        </Reveal>
-
-        <div className="mt-10 w-full">
-          <PixelGame />
+        <div className="w-full">
+          <Arcade />
         </div>
-
-        <Reveal>
-          <div className="mt-12 text-center">
-            <p className="text-sm text-white/55">
-              Done playing? The person who built this is worth a look too.
-            </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/" className="btn-primary !bg-gradient-to-r !from-fuchsia-500 !to-cyan-400">
-                ▸ Explore the profile
-              </Link>
-              <Link href="/about" className="btn-ghost">
-                Meet the human →
-              </Link>
-            </div>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.3em] text-white/25">
-              a tiny gift for the curious · built in canvas
-            </p>
-          </div>
-        </Reveal>
       </section>
     </div>
   );

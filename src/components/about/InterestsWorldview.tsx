@@ -217,13 +217,14 @@ export function InterestsWorldview() {
       <KafkaRoach />
 
       <p className="flex items-center gap-3">
-        <span className="jp neon-pink-text text-2xl leading-none">興味</span>
+        {/* <span className="jp neon-pink-text text-2xl leading-none">興味</span> */}
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon-cyan">interests &amp; worldview</span>
       </p>
-      <h2 className="mt-2 font-display text-3xl font-bold uppercase tracking-wide text-white">
-        Curiosity, engineering &amp; nonsense
+      <h2 className="mt-2 font-display text-3xl font-bold tracking-wide text-white">
+        {/* Curiosity, engineering &amp; nonsense */}
+        Welcome to Mann's Planet
       </h2>
-      <p className="mt-1 text-sm text-white/45">A curious mix of engineering, philosophy, and professional nonsense.</p>
+      <p className="mt-1 text-sm text-white/45">An alternate universe where engineering, philosophy, and professional nonsense coexist in unstable equilibrium</p>
 
       <div className="mt-8 space-y-6">
         {/* Transportation */}
@@ -316,10 +317,10 @@ export function InterestsWorldview() {
           <p className="mt-3">And one personal principle no serious school endorses:</p>
           <p className="mt-1 text-lg font-semibold text-white" lang="hi">“भकचोदी परमो धर्मः”</p>
           <p className="text-xs italic text-white/40">Shenanigans are the highest virtue.</p>
-          <p className="mt-3 text-sm text-white/50">
+          {/* <p className="mt-3 text-sm text-white/50">
             At the intersection of engineering, philosophy, and chaos, you&apos;ll usually find me — wondering how things
             work, why they exist, and whether my next flight is an A350.
-          </p>
+          </p> */}
         </Card>
 
         <Interjection text="↓ you scrolled the whole thing. genuinely — respect. 🫡" />

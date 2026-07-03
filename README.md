@@ -6,7 +6,7 @@ Each persona has its **own animated theme** (matrix code-rain, blueprint knowled
 
 | Persona | What it shows | Data source |
 | --- | --- | --- |
-| **Coder** | Stack, selected projects, OSS | `src/data/coder.ts` |
+| **Developer** | Stack, selected projects, OSS | `src/data/coder.ts` |
 | **Researcher** | Publications + **t-SNE embedding, topic network graph, radar, output bars** | `src/data/researcher.ts` |
 | **Photographer** | Masonry gallery + lightbox | `src/data/photographer.ts` |
 | **Illustrator** | 3D-tilt poster wall + Behance link | `src/data/illustrator.ts` |

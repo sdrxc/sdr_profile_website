@@ -2,14 +2,15 @@ export const profile = {
   name: "Soumya Deep Roy",
   role: "Multidisciplinary Builder",
   // Short tagline shown under the hero name
-  tagline: "Coder · Researcher · Photographer · Cinephile · Listener · Explorer · Reader",
-  bio: "I move between disciplines — writing code, doing research, making photographs, watching films, listening deeply, exploring the world, and reading widely. This is a map of those lives.",
+  tagline: "Developer · Researcher · Photographer · Cinephile · Listener · Explorer · Reader",
+  bio: "A curious mind with too many tabs open.",
   location: "Earth | পৃথিবী | धरती",
   email: "sdrjumme@gmail.com",
   socials: [
     { label: "GitHub", href: "https://github.com/sdrxc" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/soumya-deep-roy" },
-    { label: "Spotify", href: "https://open.spotify.com/user/sdrxc" },
+    { label: "Instagram", href: "https://www.instagram.com/sdrxc" },
+    // { label: "Spotify", href: "https://open.spotify.com/user/sdrxc" },
   ],
 };
 
@@ -28,7 +29,7 @@ export type Persona = {
 export const personas: Persona[] = [
   {
     slug: "coder",
-    title: "Coder",
+    title: "Developer",
     blurb: "Systems, tools, and the craft of shipping software.",
     from: "from-violet-500",
     to: "to-indigo-500",

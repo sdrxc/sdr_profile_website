@@ -39,7 +39,7 @@ function PersonaCard({
           });
         }}
         onMouseLeave={() => setGlow((g) => ({ ...g, on: false }))}
-        className="group relative flex h-full min-h-[200px] flex-col justify-between overflow-hidden rounded-3xl glass glass-hover p-7"
+        className="group relative flex h-full min-h-[180px] flex-col justify-between overflow-hidden rounded-3xl glass glass-hover p-5 sm:min-h-[200px] sm:p-7"
       >
         {/* cursor-following glow */}
         <div
@@ -91,23 +91,23 @@ export function PersonaGrid() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-14 text-center"
+        className="mb-10 text-center sm:mb-14"
       >
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-neon-violet">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neon-violet sm:text-sm sm:tracking-[0.3em]">
           Seven lives, one person
         </p>
-        <p className="text-xs font-slim uppercase tracking-[0.3em] text-white/20">
+        <p className="mt-1 text-[0.65rem] font-slim uppercase tracking-[0.25em] text-white/20 sm:text-xs sm:tracking-[0.3em]">
           Seven lives? कही मैं एक बिल्ली तो नहीं?🐱
         </p>
-        <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white xs:text-4xl sm:text-5xl">
           Choose a <span className="gradient-text">persona</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-md text-white/50">
+        <p className="mx-auto mt-3 max-w-md px-2 text-sm text-white/50 sm:mt-4 sm:text-base">
           Each one is a different lens on the same curiosity. Pick where to begin.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {personas.map((p, i) => (
           <PersonaCard key={p.slug} persona={p} index={i} />
         ))}

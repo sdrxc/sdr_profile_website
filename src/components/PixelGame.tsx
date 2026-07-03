@@ -254,7 +254,7 @@ export function PixelGame() {
   }, [action]);
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <div className="mx-auto w-full max-w-5xl">
       <div
         className="relative cursor-pointer select-none overflow-hidden rounded-2xl border-2 border-neon-cyan/40"
         style={{ boxShadow: "0 0 40px -8px rgba(0,240,255,0.5)" }}
@@ -279,7 +279,7 @@ export function PixelGame() {
 
         {/* overlays */}
         {status !== "run" && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/55 text-center backdrop-blur-[2px]">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/55 px-6 text-center backdrop-blur-[2px]">
             {status === "idle" ? (
               <>
                 <p className="font-display text-2xl font-extrabold uppercase tracking-widest neon-cyan-text sm:text-4xl">
@@ -294,10 +294,10 @@ export function PixelGame() {
               </>
             ) : (
               <>
-                <p className="font-display text-3xl font-extrabold uppercase tracking-widest neon-pink-text">
+                <p className="font-display text-3xl font-extrabold uppercase tracking-widest neon-pink-text sm:text-5xl">
                   Game Over
                 </p>
-                <p className="mt-3 font-mono text-sm text-white/80">
+                <p className="mt-4 font-mono text-sm text-white/80 sm:text-base">
                   SCORE <span className="text-neon-cyan">{String(score).padStart(5, "0")}</span>
                   <span className="mx-2 text-white/30">·</span>
                   BEST <span className="text-neon-pink">{String(high).padStart(5, "0")}</span>
@@ -306,33 +306,13 @@ export function PixelGame() {
                   ▸ tap / space to retry ◂
                 </p>
 
-                {/* reverse-lure: you liked the game, now meet the human */}
-                <div className="mt-6 w-full max-w-sm rounded-xl border border-fuchsia-400/30 bg-black/40 p-4">
-                  <p className="text-xs text-white/70">
-                    {score >= 250
-                      ? "Okay, you're good at this 🏆 You'd probably vibe with the rest too."
-                      : "Liked that? There's a whole human behind this little game."}
-                  </p>
-                  <p className="mt-1 text-[11px] text-white/40">
-                    Each ★ you grabbed is a discipline he actually dabbles in.
-                  </p>
-                  <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-                    <Link
-                      href="/"
-                      onClick={(e) => e.stopPropagation()}
-                      className="rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-400 px-3 py-1.5 text-xs font-semibold text-white"
-                    >
-                      ▸ Explore the profile
-                    </Link>
-                    <Link
-                      href="/about"
-                      onClick={(e) => e.stopPropagation()}
-                      className="rounded-lg border border-white/20 px-3 py-1.5 text-xs text-white/80 hover:border-white/50"
-                    >
-                      Meet the human →
-                    </Link>
-                  </div>
-                </div>
+                <Link
+                  href="/"
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40 transition-colors hover:text-fuchsia-300"
+                >
+                  or → meet the hooman 
+                </Link>
               </>
             )}
           </div>

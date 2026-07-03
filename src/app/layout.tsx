@@ -50,6 +50,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=DotGothic16&display=swap"
           rel="stylesheet"
         />
+        {/* Press Start 2P + VT323 — true 8-bit pixel fonts for the /game arcade-hall theme */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+          rel="stylesheet"
+        />
+        {/* Nastaliq (Urdu) + Devanagari (Hindi) for the /reader shayari & ghazals section */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="font-sans">
         <Nav />

@@ -23,7 +23,7 @@ export function ChartFrame({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`glass rounded-3xl p-5 sm:p-6 ${className ?? ""}`}
+      className={`glass flex flex-col rounded-3xl p-5 sm:p-6 ${className ?? ""}`}
     >
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
@@ -36,7 +36,7 @@ export function ChartFrame({
           </span>
         )}
       </div>
-      {children}
+      <div className="flex-1">{children}</div>
     </motion.div>
   );
 }

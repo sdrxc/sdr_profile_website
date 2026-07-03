@@ -7,6 +7,7 @@ import { ChartFrame } from "@/components/charts/ChartFrame";
 import { BubbleCloud } from "@/components/charts/BubbleCloud";
 import { BarChart } from "@/components/charts/BarChart";
 import { personaBySlug } from "@/data/profile";
+import Link from "next/link";
 import { reader, genreColors, type Book } from "@/data/reader";
 
 const persona = personaBySlug("reader")!;
@@ -83,7 +84,48 @@ export default function ReaderPage() {
       <PersonaTheme slug="reader" />
       <PersonaHero persona={persona} intro={reader.intro} />
 
-      <div className="section-pad !pt-4 grid gap-12 lg:grid-cols-2">
+      {/* ── Coffee House (quotes + shayari/ghazals) ── */}
+      <div className="section-pad !py-6">
+        <Reveal>
+          <Link href="/reader/commonplace" className="group block">
+            <div
+              className="glass glass-hover relative overflow-hidden rounded-3xl p-8 sm:p-10"
+              style={{ borderColor: `${persona.accent}33` }}
+            >
+              <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="max-w-xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: persona.accent }}>
+                    शायरी · غزل · quotes
+                  </p>
+                  <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
+                    Coffee House
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-white/55">
+                    Favourite quotes and the shayari &amp; ghazals (Hindi &amp; Urdu) I keep coming
+                    back to — collected in one place.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                    <span className="rounded-full px-3 py-1" style={{ background: `${persona.accent}1a`, color: persona.accent, border: `1px solid ${persona.accent}40` }}>
+                      {reader.quotes.length} quotes
+                    </span>
+                    <span className="rounded-full px-3 py-1" style={{ background: `${persona.accent}1a`, color: persona.accent, border: `1px solid ${persona.accent}40` }}>
+                      {reader.verses.length} verses
+                    </span>
+                  </div>
+                </div>
+                <span
+                  className="inline-flex items-center gap-2 self-start whitespace-nowrap text-sm font-semibold transition-transform group-hover:translate-x-1 sm:self-center"
+                  style={{ color: persona.accent }}
+                >
+                  Let&apos;s brew →
+                </span>
+              </div>
+            </div>
+          </Link>
+        </Reveal>
+      </div>
+
+      <div className="section-pad !py-6 grid gap-12 lg:grid-cols-2">
         <div>
           <Reveal>
             <h2 className="font-display text-2xl font-bold text-white">Currently reading</h2>
@@ -97,7 +139,7 @@ export default function ReaderPage() {
           </div>
 
           <Reveal>
-            <h2 className="mt-12 font-display text-2xl font-bold text-white">Up next</h2>
+            <h2 className="mt-8 font-display text-2xl font-bold text-white">Up next</h2>
           </Reveal>
           <div className="mt-5 space-y-3">
             {reader.queue.map((b, i) => (
@@ -130,36 +172,48 @@ export default function ReaderPage() {
       </div>
 
       {/* ── Shelf, by genre ── */}
-      <div className="section-pad !pt-4">
+      <div className="section-pad !pt-6 !pb-16">
         <Reveal>
           <div className="mb-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: persona.accent }}>
               the shelf, quantified
             </p>
             <h2 className="mt-2 font-display text-2xl font-bold text-white">Distribution by genre</h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {stats.map((s) => (
+                <span
+                  key={s.label}
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs"
+                  style={{ background: `${persona.accent}14`, border: `1px solid ${persona.accent}33` }}
+                >
+                  <span className="font-display text-sm font-bold" style={{ color: persona.accent }}>
+                    {s.value}
+                  </span>
+                  <span className="text-white/55">{s.label}</span>
+                </span>
+              ))}
+            </div>
           </div>
         </Reveal>
 
-        <div className="mb-6 grid grid-cols-3 gap-4 sm:max-w-md">
-          {stats.map((s) => (
-            <Reveal key={s.label}>
-              <div className="glass rounded-2xl p-5 text-center">
-                <p className="font-display text-3xl font-extrabold" style={{ color: persona.accent }}>{s.value}</p>
-                <p className="mt-1 text-xs text-white/45">{s.label}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="grid items-start gap-5 lg:grid-cols-2">
+        <div className="grid items-stretch gap-5 lg:grid-cols-2">
           <ChartFrame title="Genre gravity" subtitle="What I gravitate toward" badge="bubbles">
-            <BubbleCloud bubbles={genreBubbles} accent={persona.accent} />
+            <div className="flex h-full items-center justify-center">
+              <div className="w-full max-w-[340px]">
+                <BubbleCloud bubbles={genreBubbles} accent={persona.accent} />
+              </div>
+            </div>
           </ChartFrame>
           <ChartFrame title="Books per genre" subtitle="Read so far" badge="bar">
-            <BarChart bars={genreBars} accent={persona.accent} horizontal />
+            <div className="flex h-full items-center">
+              <div className="w-full">
+                <BarChart bars={genreBars} accent={persona.accent} horizontal />
+              </div>
+            </div>
           </ChartFrame>
         </div>
       </div>
+
     </>
   );
 }

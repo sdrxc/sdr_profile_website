@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { ConcentricCosmos } from "@/components/about/ConcentricCosmos";
 import { TaxonomyBranch } from "@/components/about/TaxonomyBranch";
 import { JourneyGitTree } from "@/components/about/JourneyGitTree";
-import { InterestsWorldview } from "@/components/about/InterestsWorldview";
+import { HyperjumpLink } from "@/components/about/Hyperjump";
 import { Breathtaking } from "@/components/about/Breathtaking";
 import { InterstellarQuotes, MorseStay, InterstellarEasterEggs } from "@/components/about/Interstellar";
 import { about } from "@/data/about";
@@ -62,7 +62,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-base text-white/60">{about.intro}</p>
+        {/* <p className="mx-auto mt-6 max-w-md text-base text-white/60">{about.intro}</p> */}
 
         <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.4em] text-neon-cyan/70 neon-flicker">
           ▸ system online ◂
@@ -98,10 +98,51 @@ export default function AboutPage() {
 
         <JourneyGitTree />
 
-        {/* Interests & Worldview */}
-        <div className="mt-24">
-          <InterestsWorldview />
-        </div>
+        {/* Interests & Worldview — now a dedicated sector; engage the hyperdrive to jump in */}
+        <Reveal>
+          <div className="mt-24">
+            <HyperjumpLink
+              href="/about/interests"
+              className="hyperjump-card group relative block overflow-hidden rounded-3xl p-8 sm:p-10"
+            >
+              {/* faint warp streaks that lean in on hover */}
+              <span className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-500 group-hover:opacity-90">
+                <span className="absolute left-1/2 top-1/2 h-px w-[140%] -translate-x-1/2 -translate-y-1/2 -rotate-2 bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent blur-[1px]" />
+                <span className="absolute left-1/2 top-1/2 h-px w-[120%] -translate-x-1/2 -translate-y-1/2 translate-y-3 rotate-3 bg-gradient-to-r from-transparent via-neon-pink/40 to-transparent blur-[1px]" />
+                <span className="absolute left-1/2 top-1/2 h-px w-[160%] -translate-x-1/2 -translate-y-1/2 -translate-y-4 rotate-1 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-[1px]" />
+              </span>
+
+              <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="max-w-xl">
+                  <p className="flex items-center gap-3">
+                    <span className="jp neon-pink-text text-2xl leading-none">興味</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon-cyan">interests &amp; worldview</span>
+                  </p>
+                  <h2 className="mt-2 font-display text-3xl font-bold uppercase tracking-wide text-white">
+                    Curiosity, engineering &amp; nonsense
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-white/55">
+                    {/* Trains, aircraft, F1, rockets, philosophy, theology, cats, and a worldview held
+                    together by &ldquo;it is what it is.&rdquo; A whole sector of its own. */}
+                    Wanna explore the things that make me tick? The hyperdrive is ready when you are.
+                  </p>
+                  {/* <div className="mt-4 flex flex-wrap gap-1.5 text-xs">
+                    {["🚄 transport", "🏎️ F1", "🌌 spaceflight", "📚 philosophy", "🐱 cats", "🧭 worldview"].map((t) => (
+                      <span key={t} className="rounded-md border border-neon-cyan/30 bg-neon-cyan/10 px-2 py-0.5 text-cyan-100/80">
+                        {t}
+                      </span>
+                    ))}
+                  </div> */}
+                </div>
+
+                <span className="inline-flex items-center gap-2 self-start whitespace-nowrap font-mono text-sm font-semibold text-neon-cyan neon-flicker transition-transform group-hover:translate-x-1 sm:self-center">
+                  ▸ Engage Hyperdrive
+                  <span className="text-lg transition-transform group-hover:translate-x-1"></span>
+                </span>
+              </div>
+            </HyperjumpLink>
+          </div>
+        </Reveal>
 
         {/* Grand finale — for the visitor who made it this far */}
         <Breathtaking />

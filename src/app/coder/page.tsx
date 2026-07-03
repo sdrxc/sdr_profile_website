@@ -8,6 +8,8 @@ import { RadarChart } from "@/components/charts/RadarChart";
 import { BubbleCloud } from "@/components/charts/BubbleCloud";
 import { BarChart } from "@/components/charts/BarChart";
 import { SkillGraph } from "@/components/charts/SkillGraph";
+import { GitHubBoard } from "@/components/coder/GitHubBoard";
+import { EngineeringBlog } from "@/components/coder/EngineeringBlog";
 import { personaBySlug } from "@/data/profile";
 import { coder } from "@/data/coder";
 
@@ -170,22 +172,30 @@ export default function CoderPage() {
           ))}
         </div>
 
-        {/* Contributions */}
+        {/* ── GitHub — live profile, KPIs & submissions ── */}
         <Reveal>
-          <h2 className="mt-20 font-display text-2xl font-bold text-white">
-            Open source
-          </h2>
+          <div id="github" className="mt-20 mb-6 scroll-mt-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: persona.accent }}>
+              the work, in public
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-white">GitHub</h2>
+          </div>
         </Reveal>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {coder.contributions.map((c, i) => (
-            <Reveal key={c.repo} delay={i * 0.06}>
-              <div className="glass rounded-2xl p-5">
-                <p className="font-mono text-sm text-neon-cyan">{c.repo}</p>
-                <p className="mt-1 text-white/60">{c.note}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <GitHubBoard accent={persona.accent} />
+
+        {/* ── Engineering Blog ── */}
+        <Reveal>
+          <div id="engineering-blog" className="mt-20 mb-6 scroll-mt-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: persona.accent }}>
+              writing & teardowns
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-white">Engineering Blog</h2>
+            <p className="mt-2 max-w-2xl text-sm text-white/55">
+              Notes, deep-dives and links across GenAI, classical ML, systems and the craft of shipping.
+            </p>
+          </div>
+        </Reveal>
+        <EngineeringBlog accent={persona.accent} />
       </div>
     </>
   );

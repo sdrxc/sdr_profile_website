@@ -76,7 +76,7 @@ body {
   }
 
   .section-pad {
-    @apply mx-auto w-full max-w-6xl px-6 py-24 sm:px-8;
+    @apply mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-24;
   }
 
   .chip {
@@ -219,6 +219,103 @@ body {
   animation: neon-flicker 4s infinite;
 }
 
+/* ───────────────── Pixel Arcade theme (scoped to .pixel-arcade) ─────────────────
+   Distinct from .anime-neon: chunky 8-bit pixel hall, no synthwave Japan vibe.
+   Re-declares the same CSS variables so neon-pink-text / neon-cyan-text etc.
+   keep working inside the games. */
+.pixel-arcade {
+  --neon-pink: #ff2d6f;
+  --neon-cyan: #00ffe1;
+  --neon-yellow: #ffd400;
+  --neon-green: #2dff8a;
+  --neon-purple: #c145ff;
+  --font-display: "VT323", "Courier New", monospace;
+  --font-pixel: "Press Start 2P", "Courier New", monospace;
+}
+
+.pixel-arcade h1,
+.pixel-arcade h2 {
+  letter-spacing: 0.04em;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel, "Press Start 2P"), monospace;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* Chunky 8-bit perspective floor — twice the cell size of .synth-grid and
+   uses pink + yellow + green so it doesn't read as the same backdrop. */
+.pixel-floor {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 58vh;
+  background-color: #04020a;
+  background-image:
+    linear-gradient(to right, rgba(255, 45, 111, 0.45) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(255, 212, 0, 0.4) 2px, transparent 2px);
+  background-size: 72px 72px;
+  transform: perspective(420px) rotateX(66deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, black 8%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, black 8%, transparent 85%);
+  animation: pixel-floor-scroll 5s linear infinite;
+}
+@keyframes pixel-floor-scroll {
+  to {
+    background-position: 0 72px;
+  }
+}
+
+/* Tiny twinkly stars / dots that float over the back wall */
+.arcade-stars {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 212, 0, 0.6), transparent 60%),
+    radial-gradient(2px 2px at 200px 150px, rgba(0, 255, 225, 0.6), transparent 60%),
+    radial-gradient(2px 2px at 90px 220px, rgba(255, 45, 111, 0.55), transparent 60%),
+    radial-gradient(2px 2px at 260px 60px, rgba(193, 69, 255, 0.55), transparent 60%);
+  background-repeat: repeat;
+  background-size: 320px 280px;
+  animation: arcade-twinkle 6s ease-in-out infinite;
+}
+@keyframes arcade-twinkle {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* Brick wall band that sits up high to suggest an arcade-room interior */
+.arcade-brick {
+  background-color: #0e0710;
+  background-image:
+    /* mortar grid */
+    linear-gradient(0deg, rgba(0, 0, 0, 0.55) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55) 2px, transparent 2px),
+    /* brick face highlight */
+    linear-gradient(135deg, rgba(255, 45, 111, 0.06), transparent 55%);
+  background-size: 64px 28px, 64px 28px, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+}
+
+/* Hyperdrive entry card (About → Interests & Worldview) */
+.hyperjump-card {
+  background: rgba(9, 8, 20, 0.66);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: border-color 0.45s ease, transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+.hyperjump-card:hover {
+  border-color: rgba(0, 240, 255, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 0 50px -12px rgba(0, 240, 255, 0.55),
+    inset 0 0 60px -30px rgba(255, 45, 149, 0.4);
+}
+
 .jp {
   font-family: var(--font-jp), sans-serif;
 }
@@ -227,4 +324,365 @@ body {
   writing-mode: vertical-rl;
   text-orientation: upright;
   letter-spacing: 0.3em;
+}
+
+/* ───────────────── Galactic theme (Interests & Worldview — post-hyperjump) ─────────────────
+   Deliberately NOT scoped like .anime-neon: it leaves the default site fonts
+   (Sora / Inter) untouched, so the page reads in the elegant default type. It
+   only re-skins the glass cards to sit well over the deep-space backdrop. */
+.galactic {
+  --neon-pink: #ff2d95;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #b14dff;
+}
+
+/* darker, starlit glass so text stays readable over bright nebulae */
+.galactic .glass {
+  background: rgba(8, 7, 20, 0.62);
+  border-color: rgba(170, 195, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 0 40px -24px rgba(125, 180, 255, 0.5),
+    inset 0 0 60px -40px rgba(180, 120, 255, 0.4);
+}
+
+/* soft cosmic glow on the page heading — restrained, no neon */
+.galactic h2 {
+  text-shadow: 0 0 22px rgba(125, 180, 255, 0.25);
+}
+
+/* twinkling starfield — tiled radial dots, two parallax layers */
+.galaxy-stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+      1px 1px at 20px 30px,
+      rgba(255, 255, 255, 0.9),
+      transparent
+    ),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, rgba(210, 225, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 90px 200px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 250px 250px, rgba(255, 240, 220, 0.8), transparent);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: star-twinkle 5s ease-in-out infinite,
+    star-drift 220s linear infinite;
+}
+.galaxy-stars--far {
+  background-image: radial-gradient(
+      1px 1px at 60px 110px,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    ),
+    radial-gradient(1px 1px at 180px 40px, rgba(200, 215, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 280px 190px, rgba(255, 255, 255, 0.45), transparent);
+  background-size: 220px 220px;
+  opacity: 0.7;
+  animation: star-twinkle 7s ease-in-out infinite reverse,
+    star-drift 340s linear infinite reverse;
+}
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes star-drift {
+  to {
+    background-position: 300px 300px;
+  }
+}
+
+
+/* ============================================================
+   PS5 console UI - scoped to .ps5-shell (used on /game)
+   ============================================================ */
+.ps5-shell {
+  color: #f0f4ff;
+  font-family: "Sora", "Inter", system-ui, -apple-system, sans-serif;
+  --ps5-blue: #2e74e0;
+  --ps5-blue-soft: #6ec1ff;
+  --ps5-violet: #a78bfa;
+  --ps5-ink: #03081a;
+}
+
+.ps5-shell h2,
+.ps5-shell h3 {
+  font-family: "Sora", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Top tabs (Games / Media / Explore) */
+.ps5-tab {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.4rem 0;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.25s ease;
+}
+.ps5-tab:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.ps5-tab-active {
+  color: #ffffff;
+}
+.ps5-tab-active::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ps5-blue), var(--ps5-blue-soft));
+  box-shadow: 0 0 12px rgba(110, 193, 255, 0.7);
+}
+
+/* Pill chips (status bar) */
+.ps5-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hero box-art card */
+.ps5-cover {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 40px 100px -40px rgba(0, 0, 0, 0.95),
+    0 0 70px -30px rgba(46, 116, 224, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.ps5-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.7rem;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ps5-corner-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  color: #ffe27a;
+  background: rgba(255, 212, 0, 0.16);
+  border: 1px solid rgba(255, 212, 0, 0.35);
+  box-shadow: 0 0 24px -8px rgba(255, 212, 0, 0.45);
+}
+
+/* Primary Play button (white pill) */
+.ps5-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  color: var(--ps5-ink);
+  background: linear-gradient(135deg, #ffffff 0%, #d6e4ff 100%);
+  box-shadow:
+    0 14px 36px -10px rgba(110, 193, 255, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+.ps5-play:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 50px -10px rgba(110, 193, 255, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+.ps5-play:active {
+  transform: translateY(0);
+}
+
+/* Secondary ghost button */
+.ps5-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.ps5-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Controller glyph (in buttons) */
+.ps5-btn-glyph {
+  display: grid;
+  place-items: center;
+  height: 1.4rem;
+  width: 1.4rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(10, 20, 40, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.ps5-btn-glyph-x {
+  color: #6ec1ff;
+  border-color: rgba(110, 193, 255, 0.45);
+  background: rgba(10, 20, 40, 0.95);
+}
+.ps5-btn-glyph-tri {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.4);
+}
+.ps5-play .ps5-btn-glyph-x {
+  background: var(--ps5-ink);
+  color: var(--ps5-blue-soft);
+}
+
+/* Library row scroller */
+.ps5-row {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(110, 193, 255, 0.4) transparent;
+}
+.ps5-row::-webkit-scrollbar {
+  height: 6px;
+}
+.ps5-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ps5-row::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(46, 116, 224, 0.5),
+    rgba(110, 193, 255, 0.5)
+  );
+  border-radius: 999px;
+}
+
+.ps5-scroll-btn {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.ps5-scroll-btn:hover {
+  background: rgba(46, 116, 224, 0.25);
+  border-color: rgba(110, 193, 255, 0.5);
+  color: #ffffff;
+}
+
+/* Game tile (in library row) */
+.ps5-tile {
+  scroll-snap-align: start;
+  background: #050a18;
+  border-radius: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.ps5-tile:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.ps5-tile-active {
+  border-color: var(--ps5-blue-soft);
+}
+
+/* Controller-button hints */
+.ps5-key-hint {
+  display: inline-grid;
+  place-items: center;
+  height: 1.55rem;
+  width: 1.55rem;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ps5-key-x {
+  color: #6ec1ff;
+  border-color: rgba(110, 193, 255, 0.45);
+}
+.ps5-key-tri {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.4);
+}
+.ps5-key-circ {
+  color: #fb7185;
+  border-color: rgba(251, 113, 133, 0.4);
+}
+.ps5-key-sq {
+  color: #c4b5fd;
+  border-color: rgba(196, 181, 253, 0.4);
+}
+
+/* Exit button (session) */
+.ps5-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.ps5-exit:hover {
+  background: rgba(251, 113, 133, 0.15);
+  border-color: rgba(251, 113, 133, 0.5);
+}
+
+/* Session stage (frame around running game) */
+.ps5-stage {
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(46, 116, 224, 0.12), transparent 60%),
+    rgba(0, 0, 0, 0.55);
 }
