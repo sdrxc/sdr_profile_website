@@ -56,7 +56,7 @@ function ShellInner() {
 
       <InterestsThemeToggle />
 
-      <InterestsAtlas theme={theme} />
+      <InterestsAtlas />
     </div>
   );
 }
