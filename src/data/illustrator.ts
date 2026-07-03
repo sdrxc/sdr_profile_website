@@ -3,64 +3,73 @@ export type Poster = {
   year?: string;
   client?: string;
   tags?: string[];
-  // Local files: put in /public/posters and use "/posters/name.jpg". Remote URLs also work.
   image: string;
-  href?: string; // link to the individual Behance project, optional
+  href?: string;
 };
 
 export const illustrator = {
   intro:
-    "Loud, layered graphic work — gig posters, type experiments, and editorial illustration. The full case studies live on Behance.",
-  behanceUrl: "https://www.behance.net/yourhandle",
-  tools: ["Procreate", "Illustrator", "Photoshop", "Risograph", "Blender"],
+    "Graphic designer and illustrator crafting branding systems, event identities, editorial layouts, posters, and digital experiences. Explore the complete case studies on Behance.",
+
+  behanceUrl: "https://www.behance.net/soumyadeeproy3",
+
+  tools: [
+    "Adobe Illustrator",
+    "Adobe Photoshop",
+    "Adobe InDesign",
+    "Figma",
+    "Blender",
+    "Procreate",
+  ],
+
   posters: [
     {
-      title: "Neon Districts",
-      year: "2025",
-      client: "Self-initiated",
-      tags: ["poster", "type", "riso"],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "JUSC",
+      year: "2021",
+      client: "Jadavpur University Science Club",
+      tags: ["Brand Identity", "Logo", "Social Media", "Print"],
+      image: "/posters/jusc.jpg",
+      href: "https://www.behance.net/gallery/123720169/JUSC",
     },
     {
-      title: "Analog Futures",
-      year: "2024",
-      client: "Synth Fest",
-      tags: ["gig poster", "gradient"],
-      image: "https://images.unsplash.com/photo-1558865869-c93f6f8482af?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "Campus24",
+      year: "2021",
+      client: "Campus24",
+      tags: ["Branding", "UI", "Marketing", "Illustration"],
+      image: "/posters/campus24.jpg",
+      href: "https://www.behance.net/gallery/123719029/Campus24",
     },
     {
-      title: "Paper Cut Series",
-      year: "2024",
-      client: "Editorial",
-      tags: ["collage", "print"],
-      image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "Srijan 2020",
+      year: "2020",
+      client: "Jadavpur University",
+      tags: ["Festival", "Brand Identity", "Poster", "Print"],
+      image: "/posters/srijan2020.jpg",
+      href: "https://www.behance.net/gallery/123711495/Srijan-2020",
     },
     {
-      title: "Type Specimen No.7",
-      year: "2023",
-      client: "Self-initiated",
-      tags: ["type", "experiment"],
-      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "IEEE Jadavpur University",
+      year: "2020",
+      client: "IEEE Student Branch",
+      tags: ["Social Media", "Branding", "Event", "Graphic Design"],
+      image: "/posters/ieee-ju.jpg",
+      href: "https://www.behance.net/gallery/123709843/IEEE-Jadavpur-University",
     },
     {
-      title: "Chromatic Aberration",
-      year: "2023",
-      client: "Gallery show",
-      tags: ["abstract", "print"],
-      image: "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "Metallix (2019–2020)",
+      year: "2020",
+      client: "Department of Metallurgical Engineering",
+      tags: ["Magazine", "Editorial", "Print", "Layout"],
+      image: "/posters/metallix.jpg",
+      href: "https://www.behance.net/gallery/123713229/Metallix-(2019-2020)",
     },
     {
-      title: "Midnight Marquee",
-      year: "2022",
-      client: "Film club",
-      tags: ["poster", "illustration"],
-      image: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=900&q=80",
-      href: "https://www.behance.net/yourhandle",
+      title: "Terrenum",
+      year: "2021",
+      client: "Hult Prize",
+      tags: ["Startup", "Brand Identity", "UI/UX", "Presentation"],
+      image: "/posters/terrenum.jpg",
+      href: "https://www.behance.net/gallery/123719881/Terrenum",
     },
   ] as Poster[],
 };
